@@ -78,7 +78,29 @@ public class HelloWorld {
     	 canvas.saveState();
     	 canvas.arc(70, 470, 90 + spacing, 440, 0, 180);
     	 canvas.stroke();
+    	 canvas.moveTo(350, 400);
+    	 canvas.lineTo(350, 400);
+    	 canvas.lineTo(300, 350);
+    	 canvas.lineTo(350, 300);
+    	 canvas.lineTo(300, 350);
+    	 canvas.lineTo(350, 300);
+    	 canvas.lineTo(400, 350);
+    	 canvas.lineTo(350, 400);
+    	 canvas.stroke();
     	 canvas.restoreState();
     	 document.close();
+    	 
+    	 /*public void drawDiamond(Graphics g, int x1, int y1, int x2, int y2)
+    	 {
+    	     x = (x1+x2)/2;
+    	     y = (y1+y2)/2;
+    	     g.drawLine(x1, y , x , y1);
+    	     g.drawLine(x , y1, x2, y );
+    	     g.drawLine(x2, y , x , y2);
+    	     g.drawLine(x , y2, x1, y );
+    	 } */
+    	 
+    	 
+    	 
     }
 }
