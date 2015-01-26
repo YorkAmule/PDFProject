@@ -48,7 +48,7 @@ public class HelloWorld {
         
     	
     	
-    	String file_name = "results/InputSample.txt";
+    	String file_name = "results/Input.txt";
 			ReadFile file = new ReadFile(file_name);
 			String[] textfile = file.OpenFile();
 			StringBuffer taketitle = new StringBuffer(textfile[0]);
@@ -56,10 +56,9 @@ public class HelloWorld {
 		    
 			String title = taketitle.substring(6, taketitle.length());
 			String subtitle = takesubtitle.substring(9, takesubtitle.length());
-			
-			
-		
-		
+			StringBuffer takespacing = new StringBuffer(textfile[2]);
+			float spacing = Float.parseFloat(takespacing.substring(8, takespacing.length()));
+		   
     	
     	Document document = new Document();
     	 
@@ -77,9 +76,8 @@ public class HelloWorld {
     	 canvas.showText(subtitle);
     	 canvas.endText();
     	 canvas.saveState();
-    	 /*canvas.moveTo(0, 0);
-    	 canvas.lineTo(595, 842);
-    	 canvas.stroke(); */
+    	 canvas.arc(70, 470, 90 + spacing, 440, 0, 180);
+    	 canvas.stroke();
     	 canvas.restoreState();
     	 document.close();
     }
