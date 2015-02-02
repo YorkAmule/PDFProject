@@ -13,7 +13,7 @@ public class ReadFileTest {
 	private ReadFile file, wrongfile;
 	private String filename = "results/Input.txt";
 	private String wrongfilename = "results/Notinput.txt";
-	private int numberOfLines;
+	//private int numberOfLines;
 	
 	@Before
     public void setup() throws Exception
@@ -31,7 +31,7 @@ public class ReadFileTest {
 	@Test
 	public void testReadLines() throws IOException {
 		
-		assertSame(file.readLines(), file.numberOfLines);
+		assertSame(3, file.readLines());
 		
 	}
 
@@ -52,6 +52,7 @@ public class ReadFileTest {
 		wrongfile.readLines();
 	}
 	
+
 	public void testgetText()
 	{
 		assertSame(2, file.getLines());

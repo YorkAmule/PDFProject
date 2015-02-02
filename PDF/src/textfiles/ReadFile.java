@@ -13,7 +13,7 @@ public class ReadFile {
 	
 	public ReadFile(String file_path) {
 		path = file_path;
-		numberOfLines = 0;
+		//numberOfLines = 0;
 	}
 	
 	public int readLines() throws IOException {
