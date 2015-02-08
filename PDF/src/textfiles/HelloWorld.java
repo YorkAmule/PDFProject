@@ -14,6 +14,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.BaseColor;
  
 /**
  * First iText example: Hello World.
@@ -26,6 +27,7 @@ public class HelloWorld {
     public static final String RESULT
         = "results/part1/chapter01/hello.pdf";
  
+    public static float SPACING;
     /**
      * Creates a PDF file: hello.pdf
      * @param    args    no arguments needed
@@ -40,28 +42,21 @@ public class HelloWorld {
     
     public static void createDiamond(PdfContentByte canvas, float x, float y)
     {
-        
-    /*canvas.moveTo(350, 400); //x=300, y=350, z=400
-       1 canvas.lineTo(350, 400); y z
-       2 canvas.lineTo(300, 350); x y
-       3 canvas.lineTo(350, 300); y x
-       4 canvas.lineTo(300, 350); x y
-       5 canvas.lineTo(350, 300); y x
-       6 canvas.lineTo(400, 350); z y
-       7 canvas.lineTo(350, 400); y z
-        canvas.stroke();  */
-            
         canvas.moveTo(x, y); 
-        canvas.lineTo(x - 5, y - 5);
-        canvas.lineTo(x, y - 10);
-        canvas.lineTo(x + 5, y - 5);
-        canvas.lineTo(x - 0.29f, y + 0.29f);
-        //canvas.lineTo(x + 12, y - 12);
-        //canvas.lineTo(x, y);
-        canvas.stroke();
-          
+        canvas.lineTo(x - SPACING, y - SPACING);
+        canvas.lineTo(x, y - (SPACING * 2));
+        canvas.lineTo(x + SPACING, y - SPACING);
+        canvas.lineTo(x - 0.35f, y + 0.35f);
+        canvas.setColorFill(new BaseColor(255, 255, 255));
+        canvas.fillStroke();
+        //canvas.stroke();       
     }
     
+    
+    public static void createArc(PdfContentByte canvas, float bottom, float top, float leftend, float rightend)
+    {
+    	canvas.arc(leftend - SPACING, bottom, leftend + SPACING, top, 0, 180);
+    }
  
     /**
      * Creates a PDF document.
@@ -83,7 +78,7 @@ public class HelloWorld {
             String title = taketitle.substring(6, taketitle.length());
             String subtitle = takesubtitle.substring(9, takesubtitle.length());
             StringBuffer takespacing = new StringBuffer(textfile[2]);
-            float spacing = Float.parseFloat(takespacing.substring(8, takespacing.length()));
+            SPACING = Float.parseFloat(takespacing.substring(8, takespacing.length()));
            
         
         Document document = new Document();
@@ -102,7 +97,7 @@ public class HelloWorld {
          canvas.showText(subtitle);
          canvas.endText();
          canvas.saveState();
-         canvas.arc(70, 470, 90 + spacing, 440, 0, 180);
+         createArc(canvas, 390, 400, 450, 500);
          canvas.stroke();
          createDiamond(canvas, 250, 700);
          //canvas.moveTo(100, 200);
