@@ -52,6 +52,40 @@ public class HelloWorld {
         //canvas.stroke();       
     }
     
+    public static void createAccent(PdfContentByte canvas, float x, float y)
+    {
+    	canvas.moveTo(x, y);
+    	canvas.lineTo(x + SPACING, y - (SPACING/2));
+    	canvas.lineTo(x, y - SPACING);
+    	canvas.fillStroke();
+    	
+    }
+    
+    public static void createHalfRest(PdfContentByte canvas, float x, float y)
+    {
+    	canvas.moveTo(x, y);
+    	canvas.lineTo(x + SPACING, y);
+    	canvas.lineTo(x + (SPACING/4), y);
+    	canvas.lineTo(x + (SPACING/4), y + (SPACING/4));
+    	canvas.lineTo(x + (SPACING/4) * 3, y + (SPACING/4));
+    	canvas.lineTo(x + (SPACING/4) * 3, y);
+    	canvas.setColorFill(new BaseColor(0, 0, 0));
+    	canvas.fillStroke();
+    }
+    
+    public static void createWholeRest(PdfContentByte canvas, float x, float y)
+    {
+    	canvas.moveTo(x, y);
+    	canvas.lineTo(x + SPACING, y);
+    	canvas.lineTo(x + (SPACING/4), y);
+    	canvas.lineTo(x + (SPACING/4), y - (SPACING/4));
+    	canvas.lineTo(x + (SPACING/4) * 3, y - (SPACING/4));
+    	canvas.lineTo(x + (SPACING/4) * 3, y);
+    	canvas.setColorFill(new BaseColor(0, 0, 0));
+    	canvas.fillStroke();
+    	
+    }
+    
     
     public static void createArc(PdfContentByte canvas, float bottom, float top, float leftend, float rightend)
     {
@@ -100,6 +134,9 @@ public class HelloWorld {
          createArc(canvas, 390, 400, 450, 500);
          canvas.stroke();
          createDiamond(canvas, 250, 700);
+         createAccent(canvas, 300, 400);
+         createHalfRest(canvas, 400, 500);
+         createWholeRest(canvas, 400, 600);
          //canvas.moveTo(100, 200);
          //canvas.rectangle(100, 200, 10, 10);
          //canvas.stroke();
